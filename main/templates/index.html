@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% block content %}
+    {% for i in books %}
+        <a href="{{i.bookContent}}">{{ i.name }}</a>
+    {% endfor%}
+    <form action="" method="post"  enctype="multipart/form-data">
+        <div>
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" value="Отправить">
+        </div>
+    </form>
+    <button onclick="Form()">Новая книга</button>
+{% endblock %}
+<script>
+    form = document.querySelector('form');
+    function Form(){
+        if (form.style.opacity == "1"){
+            form.style.opacity = "0";
+        }else{
+            form.style.opacity = "1";
+        }
+    }
+</script>
